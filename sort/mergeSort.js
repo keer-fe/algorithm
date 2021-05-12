@@ -1,3 +1,8 @@
+/**
+ * 归并排序
+ * @param {number[]} arr 数组
+ * @returns 
+ */
 const mergeSort = (arr) => {
   if (arr.length < 2) return arr
 
