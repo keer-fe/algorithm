@@ -63,11 +63,28 @@
  * @param {number} n
  * @return {number}
  */
+// const fib = (n) => {
+//   if (n === 0) return 0
+//   if (n === 1) return 1
+
+//   return fib(n - 1) + fib(n - 2)
+// }
+
 const fib = (n) => {
+  const memory = []
+  return helper(memory, n)
+}
+
+const helper = (mem, n) => {
   if (n === 0) return 0
   if (n === 1) return 1
 
-  return fib(n - 1) + fib(n - 2)
+  if (mem[n]) return mem[n]
+  mem[n] = helper(mem, n - 1) + helper(mem, n - 2)
+
+  return mem[n]
 }
+
+// console.log(fib(5))
 // @lc code=end
 
