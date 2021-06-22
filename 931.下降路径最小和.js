@@ -110,9 +110,9 @@ const minFallingPathSum = (matrix) => {
       if (i === rows - 1) {
         cache[i][j] = matrix[i][j]
       } else {
-        const leftBottom = j - 1 < 0 ? null : matrix[i + 1][j - 1]
-        const bottom = matrix[i + 1][j]
-        const rightBottom = j + 1 >= cols ? null : matrix[i + 1][j + 1]
+        const leftBottom = j - 1 < 0 ? Number.MAX_SAFE_INTEGER : cache[i + 1][j - 1]
+        const bottom = cache[i + 1][j]
+        const rightBottom = j + 1 >= cols ? Number.MAX_SAFE_INTEGER : cache[i + 1][j + 1]
         cache[i][j] = matrix[i][j] + Math.min(...[leftBottom, bottom, rightBottom])
       }
     }
@@ -121,7 +121,7 @@ const minFallingPathSum = (matrix) => {
   return Math.min(...cache[0])
 }
 
-matrix = [[2,1,3],[6,5,4],[7,8,9]]
-console.log(minFallingPathSum(matrix))
+// matrix = [[-48]]
+// console.log(minFallingPathSum(matrix))
 // @lc code=end
 
