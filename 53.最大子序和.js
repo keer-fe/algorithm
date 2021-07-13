@@ -74,15 +74,11 @@
  * @return {number}
  */
 const maxSubArray = (nums) => {
-  let result = nums[0]
-  const dp = (index) => {
-    if (index === 0) return nums[0]
-    const max = Math.max(dp(index - 1) + nums[index], nums[index])
-    result = Math.max(max, result)
-    return result
+  let dp = [nums[0]]
+  for (let i = 1; i < nums.length; i++) {
+    dp[i] = Math.max(nums[i], dp[i - 1] + nums[i])
   }
-
-  return dp(nums.length - 1)
+  console.log(dp)
 }
 
 const nums = [4,-1,2,1,-5,4]
