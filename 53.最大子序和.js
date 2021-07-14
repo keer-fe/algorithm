@@ -73,15 +73,25 @@
  * @param {number[]} nums
  * @return {number}
  */
+// const maxSubArray = (nums) => {
+//   const dp = [nums[0]]
+//   for (let i = 1; i < nums.length; i++) {
+//     dp[i] = Math.max(nums[i], dp[i - 1] + nums[i])
+//   }
+//   return Math.max(...dp)
+// }
+
 const maxSubArray = (nums) => {
-  let dp = [nums[0]]
+  let pre = nums[0]
+  let result = 0
   for (let i = 1; i < nums.length; i++) {
-    dp[i] = Math.max(nums[i], dp[i - 1] + nums[i])
+    pre = Math.max(nums[i], pre + nums[i])
+    result = Math.max(pre, result)
   }
-  console.log(dp)
+  return result
 }
 
-const nums = [4,-1,2,1,-5,4]
-console.log(maxSubArray(nums))
+// const nums = [4,-1,2,1,-5,4]
+// console.log(maxSubArray(nums))
 // @lc code=end
 
